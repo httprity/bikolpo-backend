@@ -9,7 +9,7 @@ from pydantic import BaseModel
 import openrouteservice
 import numpy as np
 import config
-from train_model import FloodRiskModel
+
 
 
 app = FastAPI()
@@ -18,12 +18,7 @@ client = openrouteservice.Client(key=ORS_API_KEY, timeout=60)
 
 
 # Load ML model if available
-try:
-    flood_model = FloodRiskModel()
-    flood_model.load_model()
-    print("✅ ML model loaded")
-except Exception as e:
-    print(f"⚠️ Using fallback flood estimator: {e}")
+
     flood_model = None
 
 
@@ -348,4 +343,5 @@ def predict_route(data: RouteRequest):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
 
