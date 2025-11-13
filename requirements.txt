@@ -2,9 +2,5 @@ fastapi
 uvicorn
 openrouteservice
 pydantic
-requests
 numpy
-pandas
-scikit-learn
-joblib
-python-dotenv
+requests
